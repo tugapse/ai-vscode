@@ -17,6 +17,10 @@ async function handleAiCommitSuggestion() {
     // Get the path of the first workspace folder (your project root)
     const workspaceRootPath = vscode.workspace.workspaceFolders[0].uri.fsPath;
 
+    // Get the configured command from settings
+    const config = vscode.workspace.getConfiguration('ai-vscode'); // 'ai-vscode' matches your extension name
+    const systemCommand = config.get<string>('aiCommitCommand', 'ai-commit'); // Default to 'ai-commit' if not set
+
     // Show a progress notification while the command runs
     await vscode.window.withProgress({
         location: vscode.ProgressLocation.Notification, // Shows a notification in the bottom right
@@ -24,8 +28,6 @@ async function handleAiCommitSuggestion() {
         cancellable: false // User cannot cancel this specific progress
     }, async (progress) => {
         try {
-            const systemCommand = 'ai-commit'; // Your command
-
             // Execute the command with the CWD set to the workspace root
             const { stdout, stderr } = await execPromise(systemCommand, { cwd: workspaceRootPath });
 
@@ -62,7 +64,7 @@ async function handleAiCommitSuggestion() {
 
         } catch (error: any) {
             // Catch any errors during command execution or other operations
-            vscode.window.showErrorMessage(`Failed to generate commit message: ${error.message}`);
+            vscode.window.showErrorMessage(`Failed to generate commit message: ${error.message}. Check your 'AI Commit Extension Configuration' settings.`);
         }
     });
 }
@@ -74,14 +76,12 @@ export function activate(context: vscode.ExtensionContext) {
 
     console.log('Congratulations, your extension "ai-vscode" is now active!');
 
-    // Register the new "AI Commit: Suggest Message" command (formerly "Hello World")
-    const aiCommitCommandDisposable = vscode.commands.registerCommand('ai-vscode.aiCommit', handleAiCommitSuggestion);
 
     // Register the custom commit action command (for the SCM button)
     const customCommitActionDisposable = vscode.commands.registerCommand('ai-vscode.customCommitAction', handleAiCommitSuggestion);
 
     // Add both command disposables to the extension context
-    context.subscriptions.push(aiCommitCommandDisposable, customCommitActionDisposable);
+    context.subscriptions.push(customCommitActionDisposable);
 }
 
 // This method is called when your extension is deactivated

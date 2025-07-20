@@ -10,16 +10,16 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:ai-vscode.aiCommit",   
-    "onCommand:ai-vscode.customCommitAction" 
+    "onCommand:ai-vscode.aiCommit",
+    "onCommand:ai-vscode.customCommitAction"
   ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "ai-vscode.aiCommit",  
-        "title": "AI Commit: Suggest Message", 
-        "icon": "$(sparkle)" 
+        "command": "ai-vscode.aiCommit",
+        "title": "AI Commit: Suggest Message",
+        "icon": "$(sparkle)"
       },
       {
         "command": "ai-vscode.customCommitAction",
@@ -35,6 +35,16 @@
           "when": "scmProvider == git"
         }
       ]
+    },
+    "configuration": {
+      "title": "AI Commit Extension Configuration",
+      "properties": {
+        "ai-vscode.aiCommitCommand": {
+          "type": "string",
+          "default": "ai-commit",
+          "description": "The command to execute for AI commit message suggestion. Ensure it's in your system's PATH or provide the full path."
+        }
+      }
     }
   },
   "scripts": {
