@@ -1,0 +1,67 @@
+{
+  "name": "ai-vscode",
+  "displayName": "ai-vscode",
+  "description": "AI connection to ai",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.100.3"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:ai-vscode.aiCommit",   
+    "onCommand:ai-vscode.customCommitAction" 
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-vscode.aiCommit",  
+        "title": "AI Commit: Suggest Message", 
+        "icon": "$(sparkle)" 
+      },
+      {
+        "command": "ai-vscode.customCommitAction",
+        "title": "AI Commit Suggestion",
+        "icon": "$(lightbulb)"
+      }
+    ],
+    "menus": {
+      "scm/title": [
+        {
+          "command": "ai-vscode.customCommitAction",
+          "group": "navigation@1",
+          "when": "scmProvider == git"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./",
+    "test-watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTests.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "eslint": "^8.56.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.3.3",
+    "@vscode/test-electron": "^2.3.9",
+    "esbuild": "^0.20.0"
+  }
+}
