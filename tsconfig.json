@@ -3,13 +3,18 @@
         "module": "Node16",
         "target": "ES2022",
         "lib": [
-            "ES2022"
+            "ES2022",
+            "DOM"
         ],
         "sourceMap": true,
         "rootDir": "src",
         "outDir": "dist",
-        "strict": true
+        "strict": true,
+        "skipLibCheck": true // Add this line to skip type checking of declaration files
     },
+    "include": [
+        "src/**/*.ts"
+    ],
     "exclude": [
       "node_modules",
       ".vscode-test"

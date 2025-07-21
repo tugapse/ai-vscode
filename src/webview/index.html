@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat Assistant</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            height: calc(100vh - 20px); /* Adjust for padding */
+            background-color: var(--vscode-editor-background);
+            color: var(--vscode-editor-foreground);
+        }
+        #chat-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            border: 1px solid var(--vscode-editorGroup-border);
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: var(--vscode-editor-background);
+        }
+        .message {
+            margin-bottom: 8px;
+            padding: 8px 12px;
+            border-radius: 15px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background-color: var(--vscode-button-background);
+            color: var(--vscode-button-foreground);
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        .ai-message {
+            background-color: var(--vscode-editorWidget-background);
+            color: var(--vscode-editorWidget-foreground);
+            align-self: flex-start;
+            margin-right: auto;
+        }
+        .loading-message {
+            background-color: var(--vscode-statusBarItem-warningBackground);
+            color: var(--vscode-statusBarItem-warningForeground);
+            align-self: flex-start;
+            margin-right: auto;
+            font-style: italic;
+        }
+        #input-area {
+            display: flex;
+            gap: 10px;
+        }
+        #chat-input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid var(--vscode-input-border);
+            border-radius: 5px;
+            background-color: var(--vscode-input-background);
+            color: var(--vscode-input-foreground);
+        }
+        #send-button {
+            background-color: var(--vscode-button-background);
+            color: var(--vscode-button-foreground);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        #send-button:hover {
+            background-color: var(--vscode-button-hoverBackground);
+        }
+        #send-button:disabled {
+            background-color: var(--vscode-button-secondaryBackground);
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container"></div>
+    <div id="input-area">
+        <input type="text" id="chat-input" placeholder="Type your message...">
+        <button id="send-button">Send</button>
+    </div>
+
+    <!-- The script for the webview will now be a separate compiled TypeScript file -->
+    <script src="{{webviewScriptUri}}"></script>
+</body>
+</html>
