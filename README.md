@@ -1,71 +1,69 @@
-# ai-vscode README
+**AI-Powered Commit Message Suggestion Extension**
+=====
 
-This is the README for your extension "ai-vscode". After writing up a brief description, we recommend including the following sections.
+A Visual Studio Code extension that provides AI-powered commit message suggestions to help you write better commit messages.
 
-## Features
+**Features**
+------------
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+*   **AI-powered commit message suggestions**: Use artificial intelligence to suggest high-quality commit messages based on your code changes.
+*   **Flexible handling options**: Choose between copying the suggested message directly to your clipboard or reviewing and editing it in a text input box.
+*   **Error handling**: Catch and display any errors that occur during command execution or other operations.
 
-For example if there is an image subfolder under your extension project workspace:
+**Installation**
+---------------
 
-\!\[feature X\]\(images/feature-x.png\)
+1.  Open Visual Studio Code.
+2.  Navigate to the Extensions view by clicking the Extensions icon in the left sidebar or pressing `Ctrl + Shift + X` (Windows/Linux) or `Cmd + Shift + X` (macOS).
+3.  Search for "AI-Powered Commit Message Suggestion" in the Extensions Marketplace.
+4.  Click on the extension's result to open its details page.
+5.  Click the "Install" button to install the extension.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+**Usage**
+----------
 
-## Requirements
+1.  Open a workspace folder in Visual Studio Code.
+2.  Trigger a custom commit action by clicking on the SCM button (usually located near your file tabs).
+3.  Choose between copying the suggested message directly to your clipboard or reviewing and editing it in a text input box.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+**Configuration**
+-----------------
 
-## Extension Settings
+You can configure the extension's behavior by modifying its settings:
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+1.  Open Visual Studio Code's Settings view by clicking on `File` > `Preferences` > `Settings`.
+2.  Navigate to the "ai-vscode" configuration section.
+3.  Update the "aiCommitCommand" setting to use a different AI commit command.
 
-For example:
+**Note**: The AI commit command used by this extension is based on the [AI repository](https://github.com/tugapse/ai). If you'd like to use a different AI model, please update the `aiCommitCommand` setting accordingly.
 
-This extension contributes the following settings:
+**Requirements**
+---------------
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+*   Visual Studio Code 1.63 or later
+*   Node.js 14 or later
 
-## Known Issues
+**Troubleshooting**
+-------------------
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+If you encounter any issues with the extension, please check the following:
 
-## Release Notes
+*   Ensure that you have installed the latest version of Visual Studio Code.
+*   Verify that your workspace folder is open in Visual Studio Code.
+*   Check the extension's settings for any configuration errors.
 
-Users appreciate release notes as you update your extension.
+**Contributing**
+---------------
 
-### 1.0.0
+We welcome contributions from the community! If you'd like to contribute code, please fork this repository and submit a pull request with your changes.
 
-Initial release of ...
+**License**
+----------
 
-### 1.0.1
+This extension is released under the [MIT License](https://opensource.org/licenses/MIT).
 
-Fixed issue #.
+**Acknowledgments**
+------------------
 
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+*   This extension uses [Child Process](https://nodejs.org/api/child_process.html) for executing system commands.
+*   It also utilizes [VS Code's API](https://code.visualstudio.com/docs/extensionAPI) for interacting with the VS Code environment.
